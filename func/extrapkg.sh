@@ -15,6 +15,7 @@ extra() {
 				wget https://launchpad.net/~fish-shell/+archive/ubuntu/release-3/+files/fish_3.5.1-1~jammy_amd64.deb
 				sudo nala install ./fish_3.5.1-1~jammy_amd64.deb -y
 				rm fish_3.5.1-1~jammy_amd64.deb
+                mkdir -p ~/.config/fish/
                 touch  ~/.config/fish/config.fish
                 echo " 
 #alias sudo='doas'

@@ -45,16 +45,23 @@ do
             gaming
         ;;
 #############################################
-		'h')
+		'h' | *)
 
 		echo 'available argument:
 		-a : all
 		-b : basics(nala)
 		-d : deb-get
-		-e : extra
+		-e : extra pkgs
 		-n : nix install
 		-g : gameing packages with nix'
 #############################################
     esac
 done
 eval "$(cat ~/.bashrc | tail -n +10)"
+
+read -p "Reboot ?[y/n] " reboot
+
+if [[ $reboot == y ]] ;then 
+    sudo reboot
+else
+    echo "Okay have a good day"
