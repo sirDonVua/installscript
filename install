@@ -1,0 +1,60 @@
+#!/bin/bash -i 
+			
+
+
+. func/basic.sh 
+. func/extrapkg.sh 
+. func/nix.sh 
+. func/gaming.sh
+
+
+while getopts  "a b d e n g h" flag
+do 
+
+	case "${flag}" in 
+		
+        'b')
+            nala
+	    ;;
+#############################################
+		'd')
+            deb-get
+		;;
+
+#############################################
+		'e')
+            extra
+	    ;;
+#############################################
+		'n' ) 
+            nix
+        ;;
+#############################################
+		'g')
+            gaming
+	    ;;	
+#############################################
+		'gth')
+			
+		;;
+#############################################
+        'a')
+            nala
+            deb-get
+            extra
+            gaming
+        ;;
+#############################################
+		'h')
+
+		echo 'available argument:
+		-a : all
+		-b : basics(nala)
+		-d : deb-get
+		-e : extra
+		-n : nix install
+		-g : gameing packages with nix'
+#############################################
+    esac
+done
+eval "$(cat ~/.bashrc | tail -n +10)"
