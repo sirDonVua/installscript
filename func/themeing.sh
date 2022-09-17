@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+## under Work not ready yet
 theme() {
     #gnome tweaks and icon pack
 			sudo nala install gnome-tweaks 
