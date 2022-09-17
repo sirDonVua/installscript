@@ -1,6 +1,6 @@
 #!/bin/bash -i 
 			
-# shellcheck source=SCRIPTDIR/func/nala.sh
+
 . func/nala.sh 
 . func/deb-get.sh
 . func/extrapkg.sh 
