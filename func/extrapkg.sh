@@ -6,11 +6,7 @@ extra() {
 	sudo deb-get install lsd bat
 	sudo nala install cmatrix cowsay lolcat figlet -y
 
-    #replacing normal boring ls and cat
-	echo "alias ls='lsd'" >> ~/.bashrc && echo "alias lt='lsd --tree'" >> ~/.bashrc
-	echo "alias cat='bat'" >> ~/.bashrc
-
-	#starship prompt
+   	#starship prompt
     curl -sS https://starship.rs/install.sh | sh
 
     #vim-plug
