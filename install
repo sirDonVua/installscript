@@ -1,29 +1,17 @@
 #!/bin/bash -i 
 			
 
-. func/nala.sh 
-. func/deb-get.sh
-. func/extrapkg.sh 
-. func/nix.sh 
+. func/pkg-mangers.sh
+. func/extra.sh 
 . func/gaming.sh
 
-while getopts  "a b d e n g h"  flag
+while getopts  "a b n g h"  flag
 do 
 
 	case "${flag}" in 
 		
-        'b')
-            nala
-            reboot=1
-	    ;;
-#############################################
-		'd')
-            deb-get
-		;;
-
-#############################################
-		'e')
-           nala-minimal && deb-get-minimal && extra
+		'r')
+           nala && deb-get && extra
 	    ;;
 #############################################
 		'n' ) 
@@ -31,7 +19,7 @@ do
         ;;
 #############################################
 		'g')
-            nala-minimal && deb-get-minimal && gaming
+            nala && deb-get && gaming
 	    ;;	
 #############################################
         'a')
@@ -39,16 +27,13 @@ do
             deb-get
             extra
             gaming
-            reboot=1
         ;;
 #############################################
 		'h' | *)
 
 		echo 'available argument:
 		-a : all
-		-b : basics(nala)
-		-d : deb-get
-		-e : extra pkgs
+		-r : recommended
 		-n : nix install
 		-g : gameing packages with nix'
 #############################################
@@ -56,14 +41,3 @@ do
 done
 
 eval "$(tail -n +10 < ~/.bashrc)"
-#reboot if needed
-if [[ $reboot == 1 ]] ;then
-	read -r -p "Reboot ?[y/n] " reboot
-
-	if [[ $reboot == y ]] ;then 
-		
-	    sudo reboot
-	else
-	    echo "Okay have a good day"
-	fi
-fi

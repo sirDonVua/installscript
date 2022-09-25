@@ -3,8 +3,8 @@
 extra() {
 
     #extra cool packages
-	sudo deb-get install lsd bat
-	sudo nala install cmatrix cowsay lolcat figlet -y
+	sudo nala install git gh vim htop cmatrix cowsay lolcat figlet -y
+	sudo deb-get install brave-browser lsd bat zoom
 
    	#starship prompt
     curl -sS https://starship.rs/install.sh | sh
