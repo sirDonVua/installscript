@@ -5,7 +5,7 @@
 . func/extra.sh 
 . func/gaming.sh
 
-while getopts  "a b n g h"  flag
+while getopts  "a r n g h"  flag
 do 
 
 	case "${flag}" in 
