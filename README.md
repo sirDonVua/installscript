@@ -1,31 +1,27 @@
-# what does it do
-this script automate some tasks i would do on a vm or when i distro hopping to test is my stuff work
+# auto installer for debian
+this script is so simple it Does what is says, installs app that i for sure will use like {vim htop nala} and more
 
-# Arguments
--a : all
--b : basics(nala)
--d : deb-get
--e : extra pkgs
--n : nix install
--g : gameing packages with nix'
-if you wanna see exactly what each one does read the file in func/
+there is 5 flags that can be used with this script
+#### -r flag
+-r stand for recommended and it will install things i need on any debian/ubuntu install
 
-### -b
-for basics *at least for me * installs nala vim htop and more
+- nala : apt frontend
+- deb-get : 3rd party .deb packages
+- vim : yeah not NEOvim
+- vifm :vi file manger
+- git & gh : git & github authenticate package
+- lsd & bat : better ls & better cat
+- htop : for system resources view
+- brave : a brave browser
+- zoom : for ifin school
+- installing my .bashrc .vimrc {and doing a backup if needed}
+- cmatrix cowsay figlet lolcat : it's a very important packages ;)
 
-### -d
-installs deb-get very good 3rd party bleeding edge deb packages
-and install brave | and removes firefox (not working i guess :( )
-### -e
-for extra packages installed with both nala and deb-get and does install fish shell
+#### -n & -g flags
+-n for nix package manger and -g for nix + gaming stuff
 
-### -n
--n for installing nix and the lateast python
-
-### -g
-install some packages for gaming with nix and nala :
-istall
-- wine 
+- wine & wine staging
+- gamemode
 - mangohud
+- steam heroic lutris
 - goverlay
-- launchers (steam, lutris, Heroic)
