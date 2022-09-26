@@ -3,7 +3,7 @@
 extra() {
 
     #extra cool packages
-	sudo nala install git gh vim htop cmatrix cowsay lolcat figlet -y
+	sudo nala install git gh vim vifm htop cmatrix cowsay lolcat figlet -y
 	sudo deb-get install brave-browser lsd bat zoom
 
    	#starship prompt
