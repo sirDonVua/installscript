@@ -19,7 +19,8 @@ deb-get() {
 nix() {
 
     sudo nala install curl || sudo apt install curl
-	sh <(curl -L https://nixos.org/nix/install) --no-daemon #one user only
+    #checks if nix is on the system, if not install it (for one user only)
+    nix-env --version || sh <(curl -L https://nixos.org/nix/install) --no-daemon
 	eval "$(tail -n +10 < ~/.bashrc)"
 		
 }
