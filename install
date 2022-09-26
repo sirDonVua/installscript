@@ -25,6 +25,7 @@ do
         'a')
             nala
             deb-get
+            nix
             extra
             gaming
         ;;
@@ -34,7 +35,7 @@ do
 		echo 'available argument:
 		-a : all
 		-r : recommended
-		-n : nix install
+		-n : nix package Manger
 		-g : gameing packages with nix'
 #############################################
     esac
