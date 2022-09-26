@@ -1,7 +1,12 @@
 # auto installer for debian
 this script is so simple it Does what is says, installs app that i for sure will use like {vim htop nala} and more
 
+
+### How to use it
+cd into the directory that the  script is installed on
+then run bash ./install -{flag}
 there is 5 flags that can be used with this script
+
 #### -r flag
 -r stand for recommended and it will install things i need on any debian/ubuntu install
 
@@ -25,3 +30,9 @@ there is 5 flags that can be used with this script
 - mangohud
 - steam heroic lutris
 - goverlay
+
+#### -a flag
+-r and -g
+
+#### -h flag
+HELP !?!
