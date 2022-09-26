@@ -1,4 +1,4 @@
-# auto installer for debian
+# auto installer for debian/ubuntu
 this script is so simple it Does what is says, installs app that i for sure will use like {vim htop nala} and more
 
 
