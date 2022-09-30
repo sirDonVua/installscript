@@ -19,6 +19,7 @@ extra() {
     wget https://raw.githubusercontent.com/sirDonVua/mydotfiles/main/.bashrc -O $HOME/.bashrc
     wget https://raw.githubusercontent.com/sirDonVua/mydotfiles/main/.vimrc -O $HOME/.vimrc
     #vifm colorscheme
+    mkdir -pv $HOME/.config/vifm/colors
     wget https://raw.githubusercontent.com/vifm/vifm-colors/master/dracula.vifm -O $HOME/.config/vifm/colors/dracula.vifm
     wget https://raw.githubusercontent.com/vifm/vifm-colors/master/gruvbox.vifm -O $HOME/.config/vifm/colors/gruvbox.vifm
     sed -i 's/colorscheme/colorscheme dracula gruvbox/' $HOME/.config/vifm/vifmrc
