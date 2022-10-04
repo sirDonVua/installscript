@@ -5,27 +5,32 @@
 . func/extra.sh 
 . func/gaming.sh
 . func/fonts.sh
+. func/config-files.sh
 
-while getopts  "a r n g f h"  flag
+while getopts  "a c r n g f h"  flag
 do 
 
 	case "${flag}" in 
 		
 		'r')
            nala && deb-get && extra
-	    ;;
+	        ;;
 #############################################
-		'n' ) 
+        'c')
+            configs
+            ;;
+#############################################
+		'n') 
             nix
-        ;;
+            ;;
 #############################################
 		'g')
             nala && deb-get && nix && gaming
-	    ;;	
+	        ;;	
 #############################################
         'f')
             nerd_fonts
-        ;;
+            ;;
 #############################################
         'a')
             nala
@@ -33,13 +38,14 @@ do
             nix
             extra
             gaming
-        ;;
+            ;;
 #############################################
 		'h' | *)
 
 		echo '
         available argument:
 		    -a : all
+            -c : my config files
 		    -r : recommended
 		    -n : nix package Manger
 		    -g : gameing packages with nix
