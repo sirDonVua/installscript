@@ -4,8 +4,9 @@
 . func/pkg-mangers.sh
 . func/extra.sh 
 . func/gaming.sh
+. func/fonts.sh
 
-while getopts  "a r n g h"  flag
+while getopts  "a r n g f h"  flag
 do 
 
 	case "${flag}" in 
@@ -22,6 +23,10 @@ do
             nala && deb-get && nix && gaming
 	    ;;	
 #############################################
+        'f')
+            nerd_fonts
+        ;;
+#############################################
         'a')
             nala
             deb-get
@@ -32,11 +37,14 @@ do
 #############################################
 		'h' | *)
 
-		echo 'available argument:
-		-a : all
-		-r : recommended
-		-n : nix package Manger
-		-g : gameing packages with nix'
+		echo '
+        available argument:
+		    -a : all
+		    -r : recommended
+		    -n : nix package Manger
+		    -g : gameing packages with nix
+            -f : nerd fonts
+        '
 #############################################
     esac
 done
