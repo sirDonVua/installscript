@@ -1,12 +1,16 @@
-#!/bin/bash -i 
+#!/usr/bin/env bash
 			
-
-. func/pkg-mangers.sh
-. func/debian/main
+# => SOURCING THE FUNCTIONS
+. func/pkg-mangers
 . func/extra
-. func/gaming.sh
-. func/fonts.sh
-. func/config-files.sh
+. func/gaming
+. func/fonts
+. func/config-files
+
+# => checking if on fedora or debian
+command -v apt > /dev/null && . func/debian/main
+command -v dnf > /dev/null && . func/fedora/main
+
 
 while getopts  "a c r n g f h"  flag
 do 
