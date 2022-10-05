@@ -2,7 +2,8 @@
 			
 
 . func/pkg-mangers.sh
-. func/extra.sh 
+. func/debian/main
+. func/extra
 . func/gaming.sh
 . func/fonts.sh
 . func/config-files.sh
@@ -13,7 +14,7 @@ do
 	case "${flag}" in 
 		
 		'r')
-           nala && deb-get && extra
+           nala && deb-get && main && extra
 	        ;;
 #############################################
         'c')
