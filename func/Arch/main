@@ -26,7 +26,9 @@ read -p 'username: ' user
 useradd -m $user ; usermod -aG wheel,audio,video $user
 passwd $user
 
-# => grup
+# => sudoers
+
+# => grub
 read -p 'EFI or bios [y,n]: ' EFI
 
 pacman -Syu grub efibootmgr os-prober dosfstools mtools --noconfirm
@@ -48,4 +50,8 @@ case $EFI in
 
 esac
 
-echo "Every thing DONE PLZ type exit and then umount -R 'your root partition'"
+# => packages
+pacman -Syu networkmanager xorg xorg-xinit xterm lightdm lightdm-gtk-greeter lightdm-webkit2-greeter openbox obconf picom lxappearance nitorgen kitty vim vifm htop geany pcmanfm firefox lsd bat starship github-cli  pipewire pipewire-pulse pipewire-alsa pipewire-jack pavucontrol wireplumber
+
+# => network
+sudo systemctl enable lightdm.service NetworkManager 
