@@ -29,7 +29,7 @@ passwd $user
 # => grup
 read -p 'EFI or bios [y,n]: ' EFI
 
-pacman -Syu grub efibootmgr os-prober dotfstools mtools --noconfirm
+pacman -Syu grub efibootmgr os-prober dosfstools mtools --noconfirm
 
 case $EFI in
     'y')
@@ -41,7 +41,7 @@ case $EFI in
 
 
     'n')
-        read -p 'ROOT DISK: ' EFIdisk
+        read -p 'DISK(not the partition): ' EFIdisk
         grub-install $EFIdisk
         grub-mkconfig -o /boot/grub/grub.cfg
         ;;
