@@ -51,7 +51,7 @@ case $EFI in
 esac
 
 # => packages
-pacman -Syu networkmanager xorg xorg-xinit xterm lightdm lightdm-gtk-greeter lightdm-webkit2-greeter openbox obconf picom lxappearance nitorgen kitty vim vifm htop geany pcmanfm firefox lsd bat starship github-cli  pipewire pipewire-pulse pipewire-alsa pipewire-jack pavucontrol wireplumber
+pacman -Syu networkmanager xorg xorg-xinit xterm lightdm lightdm-gtk-greeter lightdm-webkit2-greeter openbox obconf picom lxappearance nitrogen kitty vim vifm htop geany pcmanfm firefox lsd bat starship github-cli  pipewire pipewire-pulse pipewire-alsa pipewire-jack pavucontrol wireplumber --noconfirm
 
 # => network
 sudo systemctl enable lightdm.service NetworkManager 
