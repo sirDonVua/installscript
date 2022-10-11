@@ -10,7 +10,7 @@
 # => checking if on fedora or debian
 command -v apt > /dev/null && . func/debian/main
 command -v dnf > /dev/null && . func/fedora/main
-
+command -v pacman > /dev/null && . func/Arch/main
 
 while getopts  "a c r n g f h"  flag
 do 
@@ -18,7 +18,7 @@ do
 	case "${flag}" in 
 		
 		'r')
-           nala && deb-get && main && extra
+           main
 	        ;;
 #############################################
         'c')
