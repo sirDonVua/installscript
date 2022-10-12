@@ -9,4 +9,6 @@ main() {
     #virt manager
     sudo nala install virt-manager && sudo systemctl enable libvirtd
 
+    #starship prompt
+    curl -sS https://starship.rs/install.sh | sh
 }

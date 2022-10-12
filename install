@@ -2,12 +2,11 @@
 			
 # => SOURCING THE FUNCTIONS
 . func/pkg-mangers
-. func/extra
 . func/gaming
 . func/fonts
 . func/config-files
 
-# => checking if on fedora or debian
+# => checking if on fedora or debian or Arch
 command -v apt > /dev/null && . func/debian/main
 command -v dnf > /dev/null && . func/fedora/main
 command -v pacman > /dev/null && . func/Arch/main
