@@ -17,7 +17,7 @@ do
 	case "${flag}" in 
 		
 		'r')
-           main
+           main && nerd_fonts && configs
 	        ;;
 #############################################
         'c')
@@ -28,10 +28,6 @@ do
             nix
             ;;
 #############################################
-		'g')
-            nala && deb-get && nix && gaming
-	        ;;	
-#############################################
         'f')
             nerd_fonts
             ;;
@@ -40,7 +36,7 @@ do
             nala
             deb-get
             nix
-            extra
+            main
             gaming
             ;;
 #############################################
@@ -52,7 +48,6 @@ do
             -c : my config files
 		    -r : recommended
 		    -n : nix package Manger
-		    -g : gameing packages with nix
             -f : nerd fonts
         '
 #############################################
