@@ -12,8 +12,8 @@ ln -sf /usr/share/zoneinfo/$reg/$cou /etc/localtime
 hwclock --systohc
 
 # => localas
-sed -i ' /s/#ar_SA.UTF-8 UTF-8/ar_SA.UTF-8 UTF-8/ ' /etc/locale.gen
-sed -i ' /s/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/ ' /etc/locale.gen
+sed -i ' s/#ar_SA.UTF-8 UTF-8/ar_SA.UTF-8 UTF-8/ ' /etc/locale.gen
+sed -i ' s/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/ ' /etc/locale.gen
 locale-gen
 
 # => hostname
