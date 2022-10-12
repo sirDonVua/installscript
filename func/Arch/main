@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 
+main() {
+
 # => setup the localtime
 read -p 'region: ' reg
 read -p 'country: ' cou
@@ -35,7 +37,7 @@ pacman -Syu grub efibootmgr os-prober dosfstools mtools --noconfirm
 
 case $EFI in
     'y')
-        read -p 'EFI partition: ' EFIpart
+        read -p 'EFI partition mount point : ' EFIpart
         mount $EFIpart /boot/efi
         grub-install /boot/efi --recheck
         grub-mkconfig -o /boot/grub/grub.cfg
@@ -54,4 +56,6 @@ esac
 pacman -Syu networkmanager xorg xorg-xinit xterm lightdm lightdm-gtk-greeter lightdm-webkit2-greeter openbox obconf picom lxappearance nitrogen kitty vim vifm htop geany pcmanfm firefox lsd bat starship github-cli  pipewire pipewire-pulse pipewire-alsa pipewire-jack pavucontrol wireplumber --noconfirm
 
 # => network
-sudo systemctl enable lightdm.service NetworkManager 
+sudo systemctl enable lightdm.service NetworkManager
+
+}
