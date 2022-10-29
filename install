@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 			
 # => SOURCING THE FUNCTIONS
-. func/pkg-mangers
-. func/gaming
 . func/fonts
 . func/config-files
 
-# => checking if on fedora or debian or Arch
+# => checking if on fedora, debian or arch
 command -v apt > /dev/null && . func/debian/main
 command -v dnf > /dev/null && . func/fedora/main
 command -v pacman > /dev/null && . func/Arch/main
@@ -15,39 +13,33 @@ while getopts  "a c r n g f h"  flag
 do 
 
 	case "${flag}" in 
-		
+
+#############################################
 		'r')
-           main && nerd_fonts && configs
+           main
+           configs
+           nerd_fonts
 	        ;;
+#############################################
+        'm')
+            main
+            ;;
 #############################################
         'c')
             configs
-            ;;
-#############################################
-		'n') 
-            nix
             ;;
 #############################################
         'f')
             nerd_fonts
             ;;
 #############################################
-        'a')
-            nala
-            deb-get
-            nix
-            main
-            gaming
-            ;;
-#############################################
 		'h' | *)
 
 		echo '
         available argument:
-		    -a : all
             -c : my config files
+            -m : main
 		    -r : recommended
-		    -n : nix package Manger
             -f : nerd fonts
         '
 #############################################

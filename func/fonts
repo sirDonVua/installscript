@@ -5,13 +5,13 @@ nerd_fonts() {
 
     #Downloading the fonts
     wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/CascadiaCode.zip
-    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Hack.zip
+    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/CodeNewRoman.zip
     wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Hermit.zip
     wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/SourceCodePro.zip
     wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/UbuntuMono.zip
-
+    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Noto.zip
     #unziping and deleteing windows fonts
-    ls CascadiaCode.zip Hack.zip Hermit.zip SourceCodePro.zip UbuntuMono.zip | xargs -I x unzip x
+    ls CascadiaCode.zip CodeNewRoman.zip Noto.zip Hermit.zip SourceCodePro.zip UbuntuMono.zip | xargs -I x unzip x
     ls | grep 'Windows' | xargs -I x rm x
 
     #moving it to the fonts directory
