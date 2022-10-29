@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
 
-main() {
-
-# => setup the localtime
+# setting the values
 read -p 'region: ' reg
 read -p 'country: ' cou
+read -p 'hostname: ' host
+read -p 'username: ' user
+read -p 'EFI or bios [y,n]: ' EFI
+
+# => setup the localtime
 ln -sf /usr/share/zoneinfo/$reg/$cou /etc/localtime
 
 # => hardware clock
@@ -17,28 +20,26 @@ sed -i ' s/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/ ' /etc/locale.gen
 locale-gen
 
 # => hostname
-read -p 'hostname: ' host
 echo $host > /etc/hostname
 
 # => users and passwords
 # root password
 passwd
 # user groups and password
-read -p 'username: ' user
 useradd -m $user ; usermod -aG wheel,audio,video $user
 passwd $user
 
 # => sudoers
+sed -i 's/# %wheel ALL=(ALL:ALL) All/%wheel ALL=(ALL:ALL) All/' /etc/sudoers
 
 # => grub
-read -p 'EFI or bios [y,n]: ' EFI
-
 pacman -Syu grub efibootmgr os-prober dosfstools mtools --noconfirm
 
 case $EFI in
     'y')
-        read -p 'EFI partition mount point : ' EFIpart
-        mount $EFIpart /boot/efi
+        read -p 'EFI partition: ' EFIpart
+        mkdir -p /boot/efi
+	    mount $EFIpart /boot/efi
         grub-install /boot/efi --recheck
         grub-mkconfig -o /boot/grub/grub.cfg
         ;;
@@ -49,27 +50,29 @@ case $EFI in
         grub-install $EFIdisk
         grub-mkconfig -o /boot/grub/grub.cfg
         ;;
+     
+     *)
+	   echo "!@!#$@!" > /dev/null
+	;;
 
 esac
 
 # => packages
 pacman -Syu \
-    #gui stuff
-    xorg xorg-xinit xterm \
-    lightdm lightdm-gtk-greeter lightdm-webkit2-greeter \
-    openbox obconf picom tint2 lxappearance nitrogen \
+    #xorg
+	xorg xorg-xinit xterm \
+    #window manager stuff
+    sddm openbox awesome polkit polkit-kde-agent \
+	obconf picom lxappearance nitrogen sxhkd \
+	#hardware
+    networkmanager bluez bluez-utils xf86-input-libinput\
     #audio
-    pipewire pipewire-pulse pipewire-alsa alsa-utils alsa-firmware \
-    pipewire-jack pavucontrol wireplumber\
-    #network and bluetootha and hardware stuff
-    networkmanager bluez bluez-utils xf86-input-libinput
-    #applications
-    kitty vim vifm htop sxhkd bash-completion plocate rofi \
-    sxiv geany pcmanfm firefox github-cli \
-    lsd bat starship figlet lolcat \
-    --noconfirm
+	pipewire pipewire-pulse pipewire-alsa pipewire-jack pavucontrol wireplumber alsa-utils alsa-firmware \
+	#applications
+    alacritty vim vifm htop lsd bat plocate \
+    cbatticon wget unzip github-cli dunst bash-completion \
+	geany sxiv pcmanfm firefox rofi \
+	--noconfirm
 
-# => network
-sudo systemctl enable lightdm.service NetworkManager
-
-}
+# => system services
+systemctl enable sddm NetworkManager
