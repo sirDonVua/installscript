@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+main() {
 
 # setting the values
 read -p 'region: ' reg
@@ -59,16 +60,12 @@ esac
 
 # => packages
 pacman -Syu \
-    #xorg
 	xorg xorg-xinit xterm \
-    #window manager stuff
     sddm openbox awesome polkit polkit-kde-agent \
 	obconf picom lxappearance nitrogen sxhkd \
-	#hardware
     networkmanager bluez bluez-utils xf86-input-libinput\
-    #audio
-	pipewire pipewire-pulse pipewire-alsa pipewire-jack pavucontrol wireplumber alsa-utils alsa-firmware \
-	#applications
+	pipewire pipewire-pulse pipewire-alsa pipewire-jack pavucontrol wireplumber \
+    alsa-utils alsa-firmware alsa-ucm-conf sof-firmware  \
     alacritty vim vifm htop lsd bat plocate \
     cbatticon wget unzip github-cli dunst bash-completion \
 	geany sxiv pcmanfm firefox rofi \
@@ -76,3 +73,5 @@ pacman -Syu \
 
 # => system services
 systemctl enable sddm NetworkManager
+
+}
