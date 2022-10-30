@@ -3,24 +3,30 @@
 
 nerd_fonts() {
 
+    #setup everything
+    fonts=("CascadiaCode" "Inconsolata" "Hermit" "JetBrainsMono" "UbuntuMono" "Noto" )
+    
     #Downloading the fonts
-    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/CascadiaCode.zip
-    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/CodeNewRoman.zip
-    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Hermit.zip
-    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/SourceCodePro.zip
-    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/UbuntuMono.zip
-    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Noto.zip
-    #unziping and deleteing windows fonts
-    ls CascadiaCode.zip CodeNewRoman.zip Noto.zip Hermit.zip SourceCodePro.zip UbuntuMono.zip | xargs -I x unzip x
-    ls | grep 'Windows' | xargs -I x rm x
+    for font in ${fonts[@]} ; do    
+        
+        echo "Downloading $font"
+        aria2c -q "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/${font}.zip" \
+            -d "/tmp"
 
-    #moving it to the fonts directory
-    mkdir -pv $HOME/.fonts
-    ls | grep "Font" | xargs -I x mv x $HOME/.fonts
-    rm CascadiaCode.zip Hack.zip Hermit.zip SourceCodePro.zip UbuntuMono.zip \
-        LICENSE LICENSE.md LICENSE.txt readme.md
+        unzip -o "/tmp/${font}.zip" -d "/tmp/" &> /dev/null
+        rm -rf "/tmp/${font}.zip" &> /dev/null
+        
+        echo "$font Downloaded"
 
-    #installing the fonts
+    done
+    
+    #delete windows fonts
+    ls /tmp | grep 'Windows' | xargs -I x rm /tmp/x
+
+    #install the fonts
+    mkdir $HOME/.fonts
+    ls /tmp | grep "Font" | xargs -I x mv /tmp/x $HOME/.fonts
     fc-cache -f
+    echo "all fonts installed"
 
 }
