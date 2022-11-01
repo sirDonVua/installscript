@@ -8,6 +8,7 @@ read -p 'country: ' cou
 read -p 'hostname: ' host
 read -p 'username: ' user
 read -p 'EFI or bios [y,n]: ' EFI
+dir=$(dirname $0)
 
 # => setup the localtime
 ln -sf /usr/share/zoneinfo/$reg/$cou /etc/localtime
@@ -35,19 +36,7 @@ sed -i 's/# %wheel ALL=(ALL:ALL) All/%wheel ALL=(ALL:ALL) All/' /etc/sudoers
 
 #touchpad config
 mkdir -p /etc/X11/xorg.conf.d/
-touch /etc/X11/xorg.conf.d/30-touchpad.conf
-echo "
-Section "InputClass"
-    Identifier "libinput touchpad catchall"
-    MatchIsTouchpad "on"
-    MatchDevicePath "/dev/input/event*"
-    Option "Tapping" "True"
-    Option "TappingDrag" "True"
-    Option "NaturalScrolling" "True"
-    Option "DisableWhileTyping" "False"
-    Driver "libinput"
-EndSection
-" > /etc/X11/xorg.conf.d/30-touchpad.conf
+cp $dir/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
 
 # => grub
 pacman -Syu grub efibootmgr os-prober dosfstools mtools --noconfirm
@@ -75,19 +64,9 @@ case $EFI in
 esac
 
 # => packages
-pacman -Syu \
-	xorg xorg-xinit xterm \
-    sddm openbox awesome polkit polkit-kde-agent \
-	obconf picom lxappearance nitrogen sxhkd \
-    networkmanager bluez bluez-utils xf86-input-libinput\
-	pipewire pipewire-pulse pipewire-alsa pipewire-jack pavucontrol wireplumber \
-    alsa-utils alsa-firmware alsa-ucm-conf sof-firmware  \
-    alacritty vim vifm htop lsd bat plocate \
-    cbatticon aria2c unzip github-cli dunst bash-completion \
-	geany sxiv pcmanfm firefox rofi \
-	--noconfirm
+pacman -Syu - < $dir/PKGS --noconfirm
 
 # => system services
-systemctl enable sddm NetworkManager
+systemctl enable sddm NetworkManager bluetooth
 
 }
