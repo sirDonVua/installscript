@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+
+reg=""
+cou=""
+host=""
+user=""
+EFI="" #y for UEFI, n for bios
+EFIpart="" #for UEFI install
+EFIdisk="" #for bios(old) install
+
+#0 for false 1 for true
+use="false"

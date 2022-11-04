@@ -2,71 +2,67 @@
 
 main() {
 
-# setting the values
-read -p 'region: ' reg
-read -p 'country: ' cou
-read -p 'hostname: ' host
-read -p 'username: ' user
-read -p 'EFI or bios [y,n]: ' EFI
-dir=$(dirname $0)
+    dir="$(dirname $0)/func/Arch"
+    
+    source $dir/conf
+    [[ $use == "false" ]] && echo "pleaze edit $dir/conf file" && exit 0
 
-# => setup the localtime
-ln -sf /usr/share/zoneinfo/$reg/$cou /etc/localtime
+    # => setup the localtime
+    ln -sf /usr/share/zoneinfo/$reg/$cou /etc/localtime
+    
+    # => hardware clock
+    hwclock --systohc
+    
+    # => localas
+    sed -i ' s/#ar_SA.UTF-8 UTF-8/ar_SA.UTF-8 UTF-8/ ' /etc/locale.gen
+    sed -i ' s/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/ ' /etc/locale.gen
+    locale-gen
+    
+    # => hostname
+    echo $host > /etc/hostname
+    
+    # => users and passwords
 
-# => hardware clock
-hwclock --systohc
-
-# => localas
-sed -i ' s/#ar_SA.UTF-8 UTF-8/ar_SA.UTF-8 UTF-8/ ' /etc/locale.gen
-sed -i ' s/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/ ' /etc/locale.gen
-locale-gen
-
-# => hostname
-echo $host > /etc/hostname
-
-# => users and passwords
-# root password
-passwd
-# user groups and password
-useradd -m $user ; usermod -aG wheel,audio,video $user
-passwd $user
-
-# => sudoers
-sed -i 's/# %wheel ALL=(ALL:ALL) All/%wheel ALL=(ALL:ALL) All/' /etc/sudoers
-
-#touchpad config
-mkdir -p /etc/X11/xorg.conf.d/
-cp $dir/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
-
-# => grub
-pacman -Syu grub efibootmgr os-prober dosfstools mtools --noconfirm
-
-case $EFI in
-    'y')
-        read -p 'EFI partition: ' EFIpart
-        mkdir -p /boot/efi
+    # root password
+    passwd
+    # user groups and password
+    useradd -m $user ; usermod -aG wheel,audio,video $user
+    passwd $user
+    
+    # => sudoers
+    sed -i 's/# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
+    
+    #touchpad config
+    mkdir -p /etc/X11/xorg.conf.d/
+    cp $dir/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
+    
+    # => grub
+    pacman -Syu grub efibootmgr os-prober dosfstools mtools --noconfirm --needed
+    
+    case $EFI in
+	'y')
+            mkdir -p /boot/efi
 	    mount $EFIpart /boot/efi
-        grub-install /boot/efi --recheck
-        grub-mkconfig -o /boot/grub/grub.cfg
-        ;;
-
-
-    'n')
-        read -p 'DISK(not the partition): ' EFIdisk
-        grub-install $EFIdisk
-        grub-mkconfig -o /boot/grub/grub.cfg
-        ;;
-     
-     *)
-	   echo "!@!#$@!" > /dev/null
-	;;
-
-esac
-
-# => packages
-pacman -Syu - < $dir/PKGS --noconfirm
-
-# => system services
-systemctl enable sddm NetworkManager bluetooth
+            grub-install /boot/efi --recheck
+            grub-mkconfig -o /boot/grub/grub.cfg
+            ;;
+	
+	
+	'n')
+            grub-install $EFIdisk
+            grub-mkconfig -o /boot/grub/grub.cfg
+            ;;
+	
+	*)
+	    echo "!@!#$@!" > /dev/null
+	    ;;
+	
+    esac
+    
+    # => packages
+    pacman -Syu - < $dir/PKGS --noconfirm --needed
+    
+    # => system services
+    systemctl enable sddm NetworkManager bluetooth
 
 }
