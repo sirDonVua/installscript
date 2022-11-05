@@ -4,17 +4,12 @@
 configs() {
 
     dir=$(dirname $0)
-    command="cp"
-    [[ $1=="link" ]] && command="ln"
-    
+    mkdir -pv ~/.config
     git clone https://github.com/sirDonVua/mydotfiles
-    dot-files=(".bashrc" ".bashrc-func" ".vimrc" ".emacs")
 
-    for i in $dot-files[@] ; do
-	$command $dir/mydotfiles/$i ~/
-    done
-
-    $command $dir/mydotfiles/.config/* ~/.config/
+    rm -rf  $dir/mydotfiles/README.md
+    mv -f $dir/mydotfiles/.config/* ~/.config/
+    mv -f $dir/mydotfiles/* ~/
     rm -rf $dir/mydotfiles
     
 }
