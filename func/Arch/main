@@ -65,4 +65,7 @@ main() {
     # => system services
     systemctl enable sddm NetworkManager bluetooth
 
+    # => virt manager network
+    virsh net-start default
+    virsh net-autostart default
 }
