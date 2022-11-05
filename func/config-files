@@ -1,16 +1,20 @@
 #!/usr/bin/env bash
 
-backup () {
-    for i in $@ ; do
-        mv $HOME/$i $HOME/$i.bak
-    done
-}
-    
+
 configs() {
 
-    backup .bashrc .bashrc-func .vimrc
-    wget https://raw.githubusercontent.com/sirDonVua/mydotfiles/main/.bashrc -O $HOME/.bashrc
-    wget https://raw.githubusercontent.com/sirDonVua/mydotfiles/main/.bashrc-func -O $HOME/.bash-func
-    wget https://raw.githubusercontent.com/sirDonVua/mydotfiles/main/.vimrc -O $HOME/.vimrc
+    dir=$(dirname $0)
+    command="cp"
+    [[ $1=="link" ]] && command="ln"
+    
+    git clone https://github.com/sirDonVua/mydotfiles
+    dot-files=(".bashrc" ".bashrc-func" ".vimrc" ".emacs")
 
+    for i in $dot-files[@] ; do
+	$command $dir/mydotfiles/$i ~/
+    done
+
+    $command $dir/mydotfiles/.config/* ~/.config/
+    rm -rf $dir/mydotfiles
+    
 }

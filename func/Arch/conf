@@ -5,9 +5,11 @@ reg=""
 cou=""
 host=""
 user=""
-EFI="" #y for UEFI, n for bios
-EFIpart="" #for UEFI install
-EFIdisk="" #for bios(old) install
+## y for UEFI n for bios or dos 
+EFI=""
+##
+EFIpart=""
+EFIdisk="" 
 
-#0 for false 1 for true
+# change to true after you set the above variables
 use="false"
