@@ -5,11 +5,14 @@ configs() {
 
     dir=$(dirname $0)
     mkdir -pv ~/.config
-    git clone https://github.com/sirDonVua/mydotfiles
+    git clone -q https://github.com/sirDonVua/mydotfiles
 
-    rm -rf  $dir/mydotfiles/README.md
-    mv -f $dir/mydotfiles/.config/* ~/.config/
-    mv -f $dir/mydotfiles/* ~/
+    cd $dir/mydotfiles/
+    rm -rf .git README.md
+    mv -f .config/* $HOME/.config
+    ls -A | xargs -I x mv -f x ~/
+
+    cd ../
     rm -rf $dir/mydotfiles
-    
+
 }
