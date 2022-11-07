@@ -3,16 +3,11 @@
 # => SOURCING THE FUNCTIONS
 dir="$(dirname $0)"
 
-. $dir/func/isthere
+. $dir/func/Arch/main
 . $dir/func/fonts
 . $dir/func/config-files
 
-# => checking if on fedora, debian or arch
-isthere apt && source $dir/func/debian/main
-isthere dnf && source $dir/func/fedora/main
-isthere pacman && source $dir/func/Arch/main
-
-while getopts  "c C r m f h"  flag
+while getopts  "c r m f h"  flag
 do 
 
 	case "${flag}" in 
@@ -33,10 +28,6 @@ do
 		    configs
 		    ;;
 #--------------------------------------------
-		'C')
-		    configs link
-		    ;;
-#--------------------------------------------
 		'f')
 		    nerd_fonts
 		    ;;
@@ -46,7 +37,6 @@ do
 		echo '
         available argument:
             -c : my config files
-            -C : link the configs
             -m : main
 	    -r : recommended
             -f : nerd fonts
