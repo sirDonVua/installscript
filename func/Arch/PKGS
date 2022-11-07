@@ -31,6 +31,7 @@ vifm
 htop
 lsd
 bat
+zoxide
 plocate
 cbatticon
 aria2
@@ -46,4 +47,6 @@ rofi
 virt-manager
 qemu-desktop
 dnsmasq
+android-file-transfer
 gvfs
+gvfs-mtp
