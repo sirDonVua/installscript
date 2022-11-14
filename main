@@ -64,18 +64,19 @@ main() {
     pacman -Syu - < $dir/PKGS --noconfirm --needed
 
     # => aura pacman wrapper and an aur helper
-    su $user -c "git clone https://aur.archlinux.org/aura-bin.git ;
+    su $user -c "cd ; git clone https://aur.archlinux.org/aura-bin.git ;
     cd aura-bin ;
-    makepkg -si ;
-    cd ../ && rm -rf aura-bin"
+    makepkg;"
+    cd /home/$user/aura-bin/ && pacman -U *.zst --noconfirm --needed
+    cd ../ && rm -rf aura-bin
 
     # nerd fonts
     aura -A nerd-fonts-complete --noconfirm
     
     # dotfiles
-    su $user -c "git clone https://github.com/sirDonVua/mydotfiles ;
+    su $user -c "cd ; git clone https://github.com/sirDonVua/mydotfiles ;
     cd mydotfiles ;
-    rm -rf README.md ;
+    rm -rf README.md ~/.bashrc ;
     stow . -t ~/ " # make a symlinks for the dot files
     
     # => system services
