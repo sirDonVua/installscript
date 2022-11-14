@@ -83,8 +83,8 @@ main() {
     systemctl enable libvirtd sddm NetworkManager bluetooth
     
     #init script
-    mkdir -p /home/$user/.config/autostart
+    mkdir -p /home/$user/.config/autorun
     chmod +x $dir/files/init.sh
-    cp $dir/files/init.sh /home/$user/.config/autostart
+    cp $dir/files/init.sh /home/$user/.config/autorun
     
 }
