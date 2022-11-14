@@ -64,26 +64,26 @@ main() {
     pacman -Syu - < $dir/PKGS --noconfirm --needed
 
     # => aura pacman wrapper and an aur helper
-    git clone https://aur.archlinux.org/aura-bin.git
-    cd aura-bin
-    makepkg -si
-    cd ../ && rm -rf aura-bin
+    su $user -c "git clone https://aur.archlinux.org/aura-bin.git ;
+    cd aura-bin ;
+    makepkg -si ;
+    cd ../ && rm -rf aura-bin"
 
     # nerd fonts
     aura -A nerd-fonts-complete
     
     # dotfiles
-    git clone https://github.com/sirDonVua/mydotfiles
-    cd mydotfiles
-    rm -rf README.md
-    stow . -t ~/ # make a symlinks for the dot files
+    su $user -c "git clone https://github.com/sirDonVua/mydotfiles ;
+    cd mydotfiles ;
+    rm -rf README.md ;
+    stow . -t ~/ " # make a symlinks for the dot files
     
     # => system services
     systemctl enable libvirtd sddm NetworkManager bluetooth
-
+    
     #init script
-    mkdir -p ~/.config/autostart
+    mkdir -p /home/$userm/.config/autostart
     chmod +x $dir/files/init.sh
-    cp $dir/files/init.sh $HOME/.config/autostart
+    cp $dir/files/init.sh /home/$user/.config/autostart
     
 }

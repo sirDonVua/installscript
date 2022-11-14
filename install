@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+dir=$(dirname $0)
 . $dir/main
 
 read -p "this script will setup Arch for you and will install packages located in PKGS file and will install Nerd Fonts and my Config files
@@ -7,14 +8,12 @@ and you Must edit the conf file first for it to work
 do you Want to countinue? [Y/N]: " choice
 
 case $choice in
-    "y|Y")
+    "y")
 	main
-	configs
 	;;
-    "n|N")
-	echo "Ok Bye' ; exit 1
+    "n")
+	echo "Ok Bye" ; exit 1
 	;;
      "*")
      echo "plz enter a valid answer"
-	
-	      
+esac	      
