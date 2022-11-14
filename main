@@ -35,7 +35,7 @@ main() {
     
     #touchpad config
     mkdir -p /etc/X11/xorg.conf.d/
-    cp $dir/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
+    cp $dir/files/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
     
     # => grub
     pacman -Syu grub efibootmgr os-prober dosfstools mtools --noconfirm --needed
