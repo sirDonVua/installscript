@@ -1,46 +1,20 @@
 #!/usr/bin/env bash
-			
-# => SOURCING THE FUNCTIONS
-dir="$(dirname $0)"
 
-. $dir/func/Arch/main
-. $dir/func/fonts
-. $dir/func/config-files
+. $dir/main
 
-while getopts  "c r m f h"  flag
-do 
+read -p "this script will setup Arch for you and will install packages located in PKGS file and will install Nerd Fonts and my Config files
+and you Must edit the conf file first for it to work
+do you Want to countinue? [Y/N]: " choice
 
-	case "${flag}" in 
-
-#--------------------------------------------
-		'r')
-		    main
-		    configs
-		    nerd_fonts
-	            ;;
-#--------------------------------------------
-
-		'm')
-		    main
-		    ;;
-#--------------------------------------------
-		'c')
-		    configs
-		    ;;
-#--------------------------------------------
-		'f')
-		    nerd_fonts
-		    ;;
-#--------------------------------------------
-		'h' | *)
-
-		echo '
-        available argument:
-            -c : my config files
-            -m : main
-	    -r : recommended
-            -f : nerd fonts
-        '
-#--------------------------------------------
-    esac
-done
+case $choice in
+    "y|Y")
+	main
+	configs
+	;;
+    "n|N")
+	echo "Ok Bye' ; exit 1
+	;;
+     "*")
+     echo "plz enter a valid answer"
+	
+	      

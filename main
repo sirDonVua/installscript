@@ -2,7 +2,7 @@
 
 main() {
 
-    dir="$(dirname $0)/func/Arch"
+    dir="$(dirname $0)"
     
     # setup the config file
     source $dir/conf
@@ -68,15 +68,22 @@ main() {
     cd aura-bin
     makepkg -si
     cd ../ && rm -rf aura-bin
+
+    # nerd fonts
+    aura -A nerd-fonts-complete
+    
+    # dotfiles
+    git clone https://github.com/sirDonVua/mydotfiles
+    cd mydotfiles
+    rm -rf README.md
+    stow . -t ~/ # make a symlinks for the dot files
     
     # => system services
     systemctl enable libvirtd sddm NetworkManager bluetooth
 
-    # => virt manager network
-    virsh net-start default
-    virsh net-autostart default
-
-    # => changing into normal user
-    su $user
-
+    #init script
+    mkdir -p ~/.config/autostart
+    chmod +x $dir/files/init.sh
+    cp $dir/files/init.sh $HOME/.config/autostart
+    
 }

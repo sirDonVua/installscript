@@ -1,1 +1,15 @@
-func/Arch/conf
+#!/usr/bin/env bash
+
+
+reg=""
+cou=""
+host=""
+user=""
+## y for UEFI n for bios or dos 
+EFI=""
+##
+EFIpart=""
+EFIdisk="" 
+
+# change to true after you set the above variables
+use="false"
