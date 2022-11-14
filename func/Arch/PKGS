@@ -4,6 +4,7 @@ xterm
 polkit
 lxsession
 sddm
+i3lock
 openbox
 obconf
 awesome
@@ -29,12 +30,15 @@ alacritty
 vim
 vifm
 htop
+btop
 lsd
 bat
 zoxide
 plocate
 cbatticon
 aria2
+flameshot
+redshift
 unzip
 github-cli
 dunst
