@@ -62,6 +62,12 @@ main() {
     
     # => packages
     pacman -Syu - < $dir/PKGS --noconfirm --needed
+
+    # => aura pacman wrapper and an aur helper
+    git clone https://aur.archlinux.org/aura-bin.git
+    cd aura-bin
+    makepkg -si
+    cd ../ && rm -rf aura-bin
     
     # => system services
     systemctl enable libvirtd sddm NetworkManager bluetooth
