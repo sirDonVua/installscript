@@ -68,7 +68,6 @@ main() {
 main-user () {
 
     dir="$(dirname $0)/func/Arch"
-    [[$USER == "root" && echo "plz run as a normal user" && exit 1]]
 
     # sourcing funcitions
     source $dir/aura

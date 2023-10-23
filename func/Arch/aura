@@ -6,4 +6,5 @@ aura () {
     cd aura-bin
     makepkg --install
     makepkg --clean
+    cd ../ && sudo rm -rf aura-bin
 }
