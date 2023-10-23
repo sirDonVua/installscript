@@ -4,8 +4,9 @@
 configs() {
 
     dir=$(dirname $0)
-    git clone -q https://github.com/sirDonVua/mydotfiles
+    git clone -q https://github.com/sirdonvua/mydotfiles
 
+    sudo mv .bashrc /tmp/
     cd $dir/mydotfiles/
     stow -v . -t $HOME
 

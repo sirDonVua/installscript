@@ -58,9 +58,10 @@ plocate
 zoxide
 cbatticon
 aria2
+wget
+curl
 unzip
 redshift
-wget
 github-cli
 bash-completion
 

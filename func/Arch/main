@@ -82,10 +82,10 @@ main-user () {
     sudo aura -A  --noconfirm --needed bibata-cursor-theme dracula-gtk-theme papirus-folders-git thorium-browser-bin pfetch opentabletdriver xournalpp
 
     # => system services
-    systemctl enable libvirtd sddm NetworkManager bluetooth
+    sudo systemctl enable libvirtd sddm NetworkManager bluetooth
 
     # => virt manager network
-    virsh net-start default
-    virsh net-autostart default
+    sudo virsh net-start default
+    sudo virsh net-autostart default
 
 }
