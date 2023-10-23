@@ -60,10 +60,6 @@ main() {
 	
     esac
 
-}
-
-main-full () {
-
     # sourcing funcitions
     source $dir/aura
 
@@ -78,5 +74,13 @@ main-full () {
 
     # => system services
     systemctl enable libvirtd sddm NetworkManager bluetooth
+
+    # => virt manager network
+    virsh net-start default
+    virsh net-autostart default
+
+    # => changing into normal user
+    su $user
+
 
 }

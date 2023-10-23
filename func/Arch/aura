@@ -11,5 +11,6 @@ aura-install () {
     cd aura-bin
 
     sudo -u $user makepkg --install
+    sudo -u $user makepkg --clean
     cd ../ && sudo rm -rf aura-bin
 }
