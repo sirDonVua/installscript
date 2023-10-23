@@ -14,7 +14,7 @@ do
 
 #--------------------------------------------
 		'r')
-		    main-user
+		    main
 		    configs
 		    nerd_fonts
 	            ;;
@@ -38,7 +38,7 @@ do
         available argument:
             -c : my config files
             -m : main
-	    -r : recommended after using -m
+	    -r : recommended
             -f : nerd fonts
         '
 #--------------------------------------------

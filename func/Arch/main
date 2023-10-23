@@ -60,32 +60,27 @@ main() {
 	
     esac
 
-    # => changing into normal user
-    su $user
-
-}
-
-main-user () {
-
-    dir="$(dirname $0)/func/Arch"
-
     # sourcing funcitions
     source $dir/aura
 
     # => aura package manager
-    aura
+    sudo -u $user aura
 
     # => packages
-    sudo aura -Syu - < $dir/PKGS --noconfirm --needed
+    aura -Syu - < $dir/PKGS --noconfirm --needed
 
     # => Aur packages
-    sudo aura -A  --noconfirm --needed bibata-cursor-theme dracula-gtk-theme papirus-folders-git thorium-browser-bin pfetch opentabletdriver xournalpp
+    aura -A  --noconfirm --needed bibata-cursor-theme dracula-gtk-theme papirus-folders-git thorium-browser-bin pfetch opentabletdriver xournalpp
 
     # => system services
-    sudo systemctl enable libvirtd sddm NetworkManager bluetooth
+    systemctl enable libvirtd sddm NetworkManager bluetooth
 
     # => virt manager network
-    sudo virsh net-start default
-    sudo virsh net-autostart default
+    virsh net-start default
+    virsh net-autostart default
+
+    # => changing into normal user
+    su $user
+
 
 }
