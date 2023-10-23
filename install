@@ -14,7 +14,7 @@ do
 
 #--------------------------------------------
 		'r')
-		    main
+		    main-full
 		    configs
 		    nerd_fonts
 	            ;;
@@ -32,6 +32,13 @@ do
 		    nerd_fonts
 		    ;;
 #--------------------------------------------
+		'a')
+		    main
+		    main-full
+		    configs
+		    nerd_fonts
+		    ;;
+#--------------------------------------------
 		'h' | *)
 
 		echo '
@@ -39,8 +46,9 @@ do
             -c : my config files
             -m : main
 	    -r : recommended
-            -f : nerd fonts
-        '
+            -f : nerd fonts'
+		    ;;
+
 #--------------------------------------------
     esac
 done

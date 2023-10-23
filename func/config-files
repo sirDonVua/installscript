@@ -3,11 +3,10 @@
 
 configs() {
 
-    dir=$(dirname $0)
-    git clone -q https://github.com/sirdonvua/mydotfiles
-
+    cd /home/$user
+    git clone -q https://github.com/sirdonvua/mydotfiles 
     sudo mv .bashrc /tmp/
-    cd $dir/mydotfiles/
-    stow -v . -t $HOME
+    cd mydotfiles
+    stow -v . -t /home/$user
 
 }

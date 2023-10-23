@@ -13,3 +13,5 @@ EFIdisk=""
 
 # change to true after you set the above variables
 use="false"
+
+export $user # to use it in other scripts

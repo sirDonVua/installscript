@@ -5,27 +5,27 @@ nerd_fonts() {
 
     #setup everything
     fonts=("CascadiaCode" "Inconsolata" "Hermit" "JetBrainsMono" "UbuntuMono" "Noto" )
+    dir="/home/$user/.local/share/fonts"
+    mkdir -p $dir
     
     #Downloading the fonts
     for font in ${fonts[@]} ; do    
         
         echo "Downloading $font"
         aria2c -q "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/${font}.zip" \
-            -d "/tmp"
+            -d $dir
 
-        unzip -o "/tmp/${font}.zip" -d "/tmp/" &> /dev/null
-        rm -rf "/tmp/${font}.zip" &> /dev/null
+        unzip -o "/tmp/${font}.zip" -d $dir &> /dev/null
+        rm -rf "/$dir/${font}.zip" &> /dev/null
         
         echo "$font Downloaded"
 
     done
     
     #delete windows fonts
-    ls /tmp | grep 'Windows' | xargs -I x rm /tmp/x
+    ls $dir | grep 'Windows' | xargs -I x rm /$dir/x
 
     #install the fonts
-    mkdir $HOME/.fonts
-    ls /tmp | grep "Font" | xargs -I x mv /tmp/x $HOME/.fonts
     fc-cache -f
     echo "all fonts installed"
 
