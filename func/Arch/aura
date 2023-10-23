@@ -1,10 +1,16 @@
 #!/usr/bin/env bash
 
 
-aura () {
+aura-install () {
+    source "$(dirname $0)/func/Arch/conf"
     git clone https://aur.archlinux.org/aura-bin.git
+
+    chmod 777 aura-bin
+    chown $user aura-bin
+    chgrp users aura-bin
     cd aura-bin
-    makepkg --install
-    makepkg --clean
+
+    sudo -u $user makepkg --install
+    sudo -u $user makepkg --clean
     cd ../ && sudo rm -rf aura-bin
 }

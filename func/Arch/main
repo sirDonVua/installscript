@@ -64,7 +64,7 @@ main() {
     source $dir/aura
 
     # => aura package manager
-    sudo -u $user aura
+    aura-install
 
     # => packages
     aura -Syu - < $dir/PKGS --noconfirm --needed
