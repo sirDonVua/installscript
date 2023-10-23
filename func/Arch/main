@@ -60,22 +60,33 @@ main() {
 	
     esac
 
+    # => changing into normal user
+    su $user
+
+}
+
+main-user () {
+
+    dir="$(dirname $0)/func/Arch"
+    [[$USER == "root" && echo "plz run as a normal user"]]
+
+    # sourcing funcitions
+    source $dir/aura
+
     # => aura package manager
-    source $dir/aura && aura
-    
+    aura
+
     # => packages
-    aura -Syu - < $dir/PKGS --noconfirm --needed ||
-	pacman -Syu - < $dir/PKGS --noconfirm --needed
-    aura -A - < $dir/AUR --noconfirm --needed || echo "oops" & sleep 3
-    
+     aura -Syu - < $dir/PKGS --noconfirm --needed
+
+    # => Aur packages
+    aura -A - < $dir/AUR --noconfirm --needed
+
     # => system services
     systemctl enable libvirtd sddm NetworkManager bluetooth
 
     # => virt manager network
     virsh net-start default
     virsh net-autostart default
-
-    # => changing into normal user
-    su $user
 
 }
