@@ -68,7 +68,7 @@ main() {
 main-user () {
 
     dir="$(dirname $0)/func/Arch"
-    [[$USER == "root" && echo "plz run as a normal user"]]
+    [[$USER == "root" && echo "plz run as a normal user" && exit 1]]
 
     # sourcing funcitions
     source $dir/aura
@@ -77,10 +77,10 @@ main-user () {
     aura
 
     # => packages
-     aura -Syu - < $dir/PKGS --noconfirm --needed
+    sudo aura -Syu - < $dir/PKGS --noconfirm --needed
 
     # => Aur packages
-    aura -A - < $dir/AUR --noconfirm --needed
+    sudo aura -A  --noconfirm --needed bibata-cursor-theme dracula-gtk-theme papirus-folders-git thorium-browser-bin pfetch opentabletdriver xournalpp
 
     # => system services
     systemctl enable libvirtd sddm NetworkManager bluetooth

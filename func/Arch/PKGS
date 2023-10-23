@@ -1,9 +1,7 @@
-# xorg
 xorg
 xorg-xinit
 xterm
 
-# window managers
 openbox
 obconf
 awesome
@@ -12,19 +10,16 @@ polkit
 lxsession
 sddm
 
-# Themeing
 lxappearance
 picom
 nitrogen
 papirus-icon-theme
 
-# Network and Bluetooth
 networkmanager
-networkmanagerapplet
+network-manager-applet
 bluez
 bluez-utils
 
-#sound
 pipewire
 pipewire-pulse
 pipewire-alsa
@@ -37,7 +32,6 @@ alsa-ucm-conf
 sof-firmware
 pamixer
 
-# basic apps
 alacritty
 emacs
 thunar
@@ -46,13 +40,11 @@ dunst
 flameshot
 sxhkd
 
-# file viewers
 feh
 ark
 okular
 celluloid
 
-# Cli and Tui
 vim
 neovim
 vifm
@@ -72,17 +64,13 @@ wget
 github-cli
 bash-completion
 
-# virtmanager
 virt-manager
 qemu-desktop
 dnsmasq
 
-# Android
 android-tools
 gvfs
 
-# input
 xf86-input-libinput
 
-#programming
 nodejs
