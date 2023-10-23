@@ -4,12 +4,9 @@
 configs() {
 
     dir=$(dirname $0)
-    mkdir -pv ~/.config
-    git clone https://github.com/sirDonVua/mydotfiles
+    git clone -q https://github.com/sirDonVua/mydotfiles
 
-    rm -rf  $dir/mydotfiles/README.md
-    mv -f $dir/mydotfiles/.config/* ~/.config/
-    mv -f $dir/mydotfiles/* ~/
-    rm -rf $dir/mydotfiles
-    
+    cd $dir/mydotfiles/
+    stow -v . -t $HOME
+
 }

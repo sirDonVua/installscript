@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+
+aura () {
+    git clone https://aur.archlinux.org/aura-bin.git
+    cd aura-bin
+    makepkg --install
+    makepkg --clean
+}

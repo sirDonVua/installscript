@@ -1,20 +1,30 @@
+# xorg
 xorg
 xorg-xinit
 xterm
-polkit
-lxsession
-sddm
+
+# window managers
 openbox
 obconf
 awesome
-picom
+qtile
+polkit
+lxsession
+sddm
+
+# Themeing
 lxappearance
+picom
 nitrogen
-sxhkd
+papirus-icon-theme
+
+# Network and Bluetooth
 networkmanager
+networkmanagerapplet
 bluez
 bluez-utils
-xf86-input-libinput
+
+#sound
 pipewire
 pipewire-pulse
 pipewire-alsa
@@ -25,25 +35,54 @@ alsa-utils
 alsa-firmware
 alsa-ucm-conf
 sof-firmware
+pamixer
+
+# basic apps
 alacritty
+emacs
+thunar
+rofi
+dunst
+flameshot
+sxhkd
+
+# file viewers
+feh
+ark
+okular
+celluloid
+
+# Cli and Tui
 vim
+neovim
 vifm
-htop
+btop
 lsd
 bat
+starship
+neofetch
+stow
 plocate
+zoxide
 cbatticon
 aria2
 unzip
+redshift
+wget
 github-cli
-dunst
 bash-completion
-emacs
-sxiv
-pcmanfm
-firefox
-rofi
+
+# virtmanager
 virt-manager
 qemu-desktop
 dnsmasq
+
+# Android
+android-tools
 gvfs
+
+# input
+xf86-input-libinput
+
+#programming
+nodejs

@@ -4,6 +4,7 @@ main() {
 
     dir="$(dirname $0)/func/Arch"
     
+    # setup the config file
     source $dir/conf
     [[ $use == "false" ]] && echo "pleaze edit $dir/conf file" && exit 0
 
@@ -25,7 +26,7 @@ main() {
 
     # root password
     passwd
-    # user groups and password
+    # user
     useradd -m $user ; usermod -aG wheel,audio,video $user
     passwd $user
     
@@ -58,14 +59,23 @@ main() {
 	    ;;
 	
     esac
+
+    # => aura package manager
+    source $dir/aura && aura
     
     # => packages
-    pacman -Syu - < $dir/PKGS --noconfirm --needed
+    aura -Syu - < $dir/PKGS --noconfirm --needed ||
+	pacman -Syu - < $dir/PKGS --noconfirm --needed
+    aura -A - < $dir/AUR --noconfirm --needed || echo "oops" & sleep 3
     
     # => system services
-    systemctl enable sddm NetworkManager bluetooth
+    systemctl enable libvirtd sddm NetworkManager bluetooth
 
     # => virt manager network
     virsh net-start default
     virsh net-autostart default
+
+    # => changing into normal user
+    su $user
+
 }
