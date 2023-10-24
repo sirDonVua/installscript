@@ -21,10 +21,40 @@ configs() {
     source "$(dirname $0)/conf"
 
     dir=/home/$user
-    git clone -q https://github.com/sirdonvua/mydotfiles
+    git clone -q https://github.com/sirdonvua/mydotfiles -C $dir
 
     sudo mv $dir/.bashrc /tmp/
     cd $dir/mydotfiles/
     stow -v . -t $dir
+
+}
+
+nerd_fonts() {
+
+    #setup everything
+    fonts=("CascadiaCode" "Inconsolata" "Hermit" "JetBrainsMono" "UbuntuMono" "Noto" )
+    
+    #Downloading the fonts
+    for font in ${fonts[@]} ; do    
+        
+        echo "Downloading $font"
+        aria2c -q "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/${font}.zip" \
+            -d "/tmp"
+
+        unzip -o "/tmp/${font}.zip" -d "/tmp/" &> /dev/null
+        rm -rf "/tmp/${font}.zip" &> /dev/null
+        
+        echo "$font Downloaded"
+
+    done
+    
+    #delete windows fonts
+    ls /tmp | grep 'Windows' | xargs -I x rm /tmp/x
+
+    #install the fonts
+    mkdir $HOME/.fonts
+    ls /tmp | grep "Font" | xargs -I x mv /tmp/x $HOME/.fonts
+    fc-cache -f
+    echo "all fonts installed"
 
 }

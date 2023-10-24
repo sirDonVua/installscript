@@ -3,9 +3,8 @@
 # => SOURCING THE FUNCTIONS
 dir="$(dirname $0)"
 
-. $dir/func/Arch/main
-. $dir/func/fonts
-. $dir/func/config-files
+. $dir/main
+. $dir/func
 
 while getopts  "c r m f h"  flag
 do 
