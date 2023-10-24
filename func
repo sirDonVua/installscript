@@ -21,9 +21,10 @@ configs() {
     source "$(dirname $0)/conf"
 
     dir=/home/$user
-    git clone -q https://github.com/sirdonvua/mydotfiles -C $dir
+    git clone -q https://github.com/sirdonvua/mydotfiles
+    mv mydotfiles $dir/dotfiles 
 
-    sudo mv $dir/.bashrc /tmp/
+    mv $dir/.bashrc /tmp/
     cd $dir/mydotfiles/
     stow -v . -t $dir
 
