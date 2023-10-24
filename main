@@ -68,7 +68,7 @@ main() {
     aura -Syu - < $dir/PKGS --noconfirm --needed
 
     # => Aur packages
-    aura -A  --noconfirm --needed bibata-cursor-theme dracula-gtk-theme papirus-folders-git thorium-browser-bin pfetch opentabletdriver xournalpp
+    sudo -u $user sudo aura -A  --noconfirm --needed $(cat $dir/AUR)
 
     # => system services
     systemctl enable libvirtd sddm NetworkManager bluetooth

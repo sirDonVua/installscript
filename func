@@ -75,7 +75,7 @@ view=icon
 recurse=true
 sort=alpha
 icon_caps=false
-dirs=/home/$user/wallpapers;" >> /home/$user/.config/nitrogen/nitrogen.cfg
+dirs=/home/$user/.local/share/wallpapers;" >> /home/$user/.config/nitrogen/nitrogen.cfg
 
     echo "
 [xin_-1]
