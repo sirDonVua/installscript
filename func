@@ -65,9 +65,11 @@ wallpapers () {
     # installing the wallpapers
     sudo -u $user git clone -q https://github.com/sirDonVua/wallpapers.git /home/$user/.local/share/wallpapers
     sudo -u $user mkdir -p /home/$user/.config/nitrogen
+    sudo -u $user touch /home/$user/.config/nitrogen/nitrogen.cfg
+    sudo -u $user touch /home/$user/.config/nitrogen/bg-saved.cfg
 
     # generating nitrogen configs 
-    sudo -u $user echo "
+    echo "
 [geometry]
 posx=0
 posy=24
@@ -81,7 +83,7 @@ sort=alpha
 icon_caps=false
 dirs=/home/$user/.local/share/wallpapers;" >> /home/$user/.config/nitrogen/nitrogen.cfg
 
-    sudo -u $user echo "
+    echo "
 [xin_-1]
 file=/home/$user/.local/share/wallpapers/05.png
 mode=0
