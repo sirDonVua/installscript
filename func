@@ -10,7 +10,7 @@ aura-install () {
     # aura
     chmod 777 aura-bin ; chown $user aura-bin ; chgrp users aura-bin ; cd aura-bin
     sudo -u $user makepkg --install
-    cd ../ rm -rf aura-bin
+    cd ../ ; rm -rf aura-bin
 
     # Thorium browser
     chmod 777 thorium-browser-bin ; chown $user thorium-browser-bin ; chgrp users thorium-browser-bin ; cd thorium-browser-bin
