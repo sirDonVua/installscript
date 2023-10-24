@@ -2,7 +2,8 @@
 
 main() {
 
-    dir="$(dirname $0)/func/Arch"
+    dir="$(dirname $0)"
+    source $dir/func
     
     # setup the config file
     source $dir/conf
@@ -35,7 +36,7 @@ main() {
     
     #touchpad config
     mkdir -p /etc/X11/xorg.conf.d/
-    cp $dir/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
+    cp $dir/data/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
     
     # => grub
     pacman -Syu grub efibootmgr os-prober dosfstools mtools --noconfirm --needed
@@ -60,9 +61,6 @@ main() {
 	
     esac
 
-    # sourcing funcitions
-    source $dir/aura
-
     # => aura package manager
     aura-install
 
@@ -78,9 +76,5 @@ main() {
     # => virt manager network
     virsh net-start default
     virsh net-autostart default
-
-    # => changing into normal user
-    su $user
-
 
 }

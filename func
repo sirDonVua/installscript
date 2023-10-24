@@ -2,7 +2,8 @@
 
 
 aura-install () {
-    source "$(dirname $0)/func/Arch/conf"
+
+    source "$(dirname $0)/conf"
     git clone https://aur.archlinux.org/aura-bin.git
 
     chmod 777 aura-bin
@@ -11,6 +12,19 @@ aura-install () {
     cd aura-bin
 
     sudo -u $user makepkg --install
-    sudo -u $user makepkg --clean
     cd ../ && sudo rm -rf aura-bin
+
+}
+
+configs() {
+
+    source "$(dirname $0)/conf"
+
+    dir=/home/$user
+    git clone -q https://github.com/sirdonvua/mydotfiles
+
+    sudo mv $dir/.bashrc /tmp/
+    cd $dir/mydotfiles/
+    stow -v . -t $dir
+
 }
