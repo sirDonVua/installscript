@@ -57,3 +57,30 @@ nerd_fonts() {
     echo "all fonts installed"
 
 }
+
+wallpapers () {
+    # installing the wallpapers
+    sudo -u $user git clone -q https://github.com/sirDonVua/wallpapers.git /home/$user/.local/share/wallpapers
+
+    # generating nitrogen configs 
+    echo "
+[geometry]
+posx=0
+posy=24
+sizex=1918
+sizey=1054
+
+[nitrogen]
+view=icon
+recurse=true
+sort=alpha
+icon_caps=false
+dirs=/home/$user/wallpapers;" >> /home/$user/.config/nitrogen/nitrogen.cfg
+
+    echo "
+[xin_-1]
+file=/home/$user/wallpapers/01.png
+mode=4
+bgcolor=#000000" >> /home/$user/.config/nitrogen/bg-saved.cfg
+    
+}
