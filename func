@@ -24,7 +24,7 @@ configs() {
 
     mv $dir/.bashrc /tmp/
     cd $dir/dotfiles/
-    stow -v . -t $dir
+    sudo -u $user stow -v . -t $dir
 
 }
 
@@ -51,9 +51,9 @@ nerd_fonts() {
     ls /tmp | grep 'Windows' | xargs -I x rm /tmp/x
 
     #install the fonts
-    mkdir -p /home/$user/.local/share/fonts
+    sudo -u $user mkdir -p /home/$user/.local/share/fonts
     ls /tmp | grep "Font" | xargs -I font-name mv /tmp/font-name /home/$user/.local/share/fonts
-    fc-cache -f
+    sudo -u $user fc-cache -f
     echo "all fonts installed"
 
 }
