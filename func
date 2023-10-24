@@ -15,7 +15,7 @@ aura-install () {
     # Thorium browser
     chmod 777 thorium-browser-bin ; chown $user thorium-browser-bin ; chgrp users thorium-browser-bin ; cd thorium-browser-bin
     sudo -u $user makepkg --install
-    cd ../ rm -rf thorium-browser-bin
+    cd ../ ; rm -rf thorium-browser-bin
 
 }
 
