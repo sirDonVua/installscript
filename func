@@ -20,8 +20,7 @@ configs() {
 
 
     dir=/home/$user
-    git clone -q https://github.com/sirdonvua/mydotfiles
-    mv mydotfiles $dir/dotfiles 
+    sudo -u $user git clone -q https://github.com/sirdonvua/mydotfiles $dir/dotfiles
 
     mv $dir/.bashrc /tmp/
     cd $dir/dotfiles/
@@ -53,7 +52,7 @@ nerd_fonts() {
 
     #install the fonts
     mkdir -p /home/$user/.local/share/fonts
-    ls /tmp | grep "Font" | xargs -I x mv /tmp/x /home/$user/.local/share/fonts
+    ls /tmp | grep "Font" | xargs -I font-name mv /tmp/font-name /home/$user/.local/share/fonts
     fc-cache -f
     echo "all fonts installed"
 
