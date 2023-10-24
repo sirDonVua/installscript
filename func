@@ -64,6 +64,7 @@ nerd_fonts() {
 wallpapers () {
     # installing the wallpapers
     sudo -u $user git clone -q https://github.com/sirDonVua/wallpapers.git /home/$user/.local/share/wallpapers
+    mkdir -p /home/$user/.config/nitrogen
 
     # generating nitrogen configs 
     sudo -u $user echo "
