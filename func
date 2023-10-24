@@ -82,7 +82,7 @@ dirs=/home/$user/.local/share/wallpapers;" >> /home/$user/.config/nitrogen/nitro
 
     sudo -u $user echo "
 [xin_-1]
-file=/home/$user/.local/share/wallpapers/01.png
+file=/home/$user/.local/share/wallpapers/05.png
 mode=4
 bgcolor=#000000" >> /home/$user/.config/nitrogen/bg-saved.cfg
     
