@@ -75,3 +75,5 @@ gvfs
 xf86-input-libinput
 
 nodejs
+
+xournalpp

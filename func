@@ -3,16 +3,18 @@
 source "$(dirname $0)/conf"
 
 aura-install () {
+    # aura and Thorium browser
+    sudo -u $user git clone -q https://aur.archlinux.org/aura-bin.git
+    sudo -u $user git clone -q https://aur.archlinux.org/thorium-browser-bin.git
 
-    git clone https://aur.archlinux.org/aura-bin.git
-
-    chmod 777 aura-bin
-    chown $user aura-bin
-    chgrp users aura-bin
+    # aura
     cd aura-bin
-
     sudo -u $user makepkg --install
-    cd ../ && sudo rm -rf aura-bin
+    cd ../ rm -rf aura-bin
+
+    # Thorium browser
+    cd thorium-browser-bin && sudo -u $user makepkg -i
+    rm -rf thorium-browser-bin
 
 }
 
@@ -79,7 +81,7 @@ dirs=/home/$user/.local/share/wallpapers;" >> /home/$user/.config/nitrogen/nitro
 
     echo "
 [xin_-1]
-file=/home/$user/wallpapers/01.png
+file=/home/$user/.local/share/wallpapers/01.png
 mode=4
 bgcolor=#000000" >> /home/$user/.config/nitrogen/bg-saved.cfg
     
