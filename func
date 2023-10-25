@@ -23,7 +23,7 @@ configs() {
 
 
     dir=/home/$user
-    sudo -u $user git clone -q https://github.com/sirdonvua/mydotfiles $dir/dotfiles
+    sudo -u $user git clone -q https://github.com/sirdonvua/dotfiles $dir/dotfiles
 
     mv $dir/.bashrc /tmp/
     cd $dir/dotfiles/
